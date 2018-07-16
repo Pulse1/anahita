@@ -1,0 +1,7 @@
+FROM php:7.2.7-apache-stretch
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get --yes install git unzip mysql-client   
+RUN docker-php-ext-install mysqli && mkdir -p /app
+ENV HOME /composer
+WORKDIR /composer
+RUN curl -s http://getcomposer.org/installer | php 
+WORKDIR /app
