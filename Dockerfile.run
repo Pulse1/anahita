@@ -1,0 +1,5 @@
+FROM php:7.2.7-apache-stretch
+RUN docker-php-ext-install mysqli 
+COPY . /app/
+RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load 
+RUN rm -rf /var/www/html && ln -s /app/www /var/www/html 
